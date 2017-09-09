@@ -7,6 +7,8 @@ import { NavbarComponent } from "./components/navbar/navbar.component";
 import { RegisterComponent } from "./components/register/register.component";
 import { AppRoutingModule } from "./app-routing.module";
 import { ListingComponent } from './components/listing/listing.component';
+import { AuthService } from './services/auth.service';
+
 
 @NgModule({
   declarations: [
@@ -21,7 +23,7 @@ import { ListingComponent } from './components/listing/listing.component';
     AppRoutingModule,
     HttpModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

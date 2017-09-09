@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import * as moment from 'moment';
+import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-register',
@@ -10,15 +12,17 @@ import * as moment from 'moment';
 export class RegisterComponent implements OnInit {
 
   form: FormGroup;
+  message;
+  messageClass;
 
   constructor(
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private authService: AuthService,
+    private router: Router
   ) 
     
   {
     this.createForm(); // Create Angular 2 Form when component loads
-    let now = moment();
-    console.log(now.add(7, 'days').format());
   }
 
   
@@ -41,12 +45,10 @@ export class RegisterComponent implements OnInit {
         this.validatelastname // Custom validation
       ])],
       // dob Input
-      dob: ['', Validators.compose([
-        Validators.required, // Field is required
-        Validators.minLength(8), // Minimum length is 8 characters
-        Validators.maxLength(35), // Maximum length is 35 characters
-        this.validatedob // Custom validation
-      ])],
+      dob: ['', 
+        Validators.pattern,
+        this.validatedob // Field is required
+      ],
       // Confirm dob Input
       confirm: ['', Validators.required] // Field is required
     }, { validator: this.matchingdobs('dob', 'confirm') }); // Add custom validator to form for matching dobs
@@ -79,7 +81,7 @@ export class RegisterComponent implements OnInit {
   // Function to validate dob
   validatedob(controls) {
     // Create a regular expression
-    const regExp = new RegExp(/^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[\d])(?=.*?[\W]).{8,35}$/);
+    const regExp = new RegExp(/^\d{1,2}\/\d{1,2}\/\d{4}$/);
     // Test dob against regular expression
     if (regExp.test(controls.value)) {
       return null; // Return as valid dob
@@ -102,7 +104,25 @@ export class RegisterComponent implements OnInit {
 
   // Function to submit form
   onRegisterSubmit() {
-    console.log('form submitted');
+     
+    const user = {
+      firstname: this.form.get('firstname').value,
+      lastname: this.form.get('lastname').value,
+      dob: this.form.get('dob').value
+    }
+
+    this.authService.registerUser(user).subscribe(data => {
+    if(!data.success){
+      this.messageClass = 'alert alert-danger'; // Set an error class
+      this.message = data.message; // Set an error message
+    } else {
+      this.messageClass = 'alert alert-success'; // Set a success class
+      this.message = data.message; // Set a success message
+      setTimeout(() => {
+        this.router.navigate(['/listing']); // Redirect to login view
+      }, 2000);
+    }
+    });
   }
 
   ngOnInit() {

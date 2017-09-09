@@ -111,7 +111,7 @@ let validdob = (dob) => {
     return false; // Return error
   } else {
     // Regular Expression to test if dob is valid format
-    const regExp = new moment().format("MMM Do YY");
+    const regExp = new Date.now();
     return regExp.test(dob); // Return regular expression test result (true or false)
   }
 };
@@ -122,11 +122,6 @@ const dobValidators = [
   {
     validator: dobLengthChecker,
     message: 'dob must be at least 8 characters but no more than 35'
-  },
-  // Second dob validator
-  {
-    validator: validdob,
-    message: 'Must have at least one uppercase, lowercase, special character, and number'
   }
 ];
 

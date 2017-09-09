@@ -1,5 +1,12 @@
 <h1 class="page-header">Add Employee</h1>
 
+
+<div class="row show-hide-message">
+  <div [ngClass]="messageClass">
+    {{ message }}
+  </div>
+</div>
+
 <!-- Registration Form -->
 <form [formGroup]="form" (submit)="onRegisterSubmit()">
 
@@ -35,7 +42,7 @@
   <div class="form-group">
     <label for="dob">Date of Birth</label>
     <div [ngClass]="{'has-error': (form.controls.dob.errors && form.controls.dob.dirty), 'has-success': !form.controls.dob.errors}">
-      <input type="dob" name="dob" class="form-control" autocomplete="off" placeholder="*dob" formControlName="dob" />
+      <input type="date" name="dob" class="form-control" autocomplete="off" placeholder="*dob" formControlName="dob" />
       <!-- Validation -->
       <ul class="help-block">
         <li *ngIf="form.controls.dob.errors?.required && form.controls.dob.dirty">This field is required</li>
