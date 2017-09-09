@@ -5,23 +5,23 @@ module.exports = (router) => {
      Register Route
   ============== */
   router.post('/register', (req, res) => {
-    // Check if email was provided
-    if (!req.body.email) {
-      res.json({ success: false, message: 'You must provide an e-mail' }); // Return error
+    // Check if firstname was provided
+    if (!req.body.firstname) {
+      res.json({ success: false, message: 'You must provide a firstname' }); // Return error
     } else {
-      // Check if username was provided
-      if (!req.body.username) {
-        res.json({ success: false, message: 'You must provide a username' }); // Return error
+      // Check if lastname was provided
+      if (!req.body.lastname) {
+        res.json({ success: false, message: 'You must provide a lastname' }); // Return error
       } else {
-        // Check if password was provided
-        if (!req.body.password) {
-          res.json({ success: false, message: 'You must provide a password' }); // Return error
+        // Check if dob was provided
+        if (!req.body.dob) {
+          res.json({ success: false, message: 'You must provide a dob' }); // Return error
         } else {
           // Create new user object and apply user input
           let user = new User({
-            email: req.body.email.toLowerCase(),
-            username: req.body.username.toLowerCase(),
-            password: req.body.password
+            firstname: req.body.firstname.toLowerCase(),
+            lastname: req.body.lastname.toLowerCase(),
+            dob: req.body.dob
           });
           // Save user to database
           user.save((err) => {
@@ -29,21 +29,21 @@ module.exports = (router) => {
             if (err) {
               // Check if error is an error indicating duplicate account
               if (err.code === 11000) {
-                res.json({ success: false, message: 'Username or e-mail already exists' }); // Return error
+                res.json({ success: false, message: 'lastname or firstname already exists' }); // Return error
               } else {
                 // Check if error is a validation rror
                 if (err.errors) {
-                  // Check if validation error is in the email field
-                  if (err.errors.email) {
-                    res.json({ success: false, message: err.errors.email.message }); // Return error
+                  // Check if validation error is in the firstname field
+                  if (err.errors.firstname) {
+                    res.json({ success: false, message: err.errors.firstname.message }); // Return error
                   } else {
-                    // Check if validation error is in the username field
-                    if (err.errors.username) {
-                      res.json({ success: false, message: err.errors.username.message }); // Return error
+                    // Check if validation error is in the lastname field
+                    if (err.errors.lastname) {
+                      res.json({ success: false, message: err.errors.lastname.message }); // Return error
                     } else {
-                      // Check if validation error is in the password field
-                      if (err.errors.password) {
-                        res.json({ success: false, message: err.errors.password.message }); // Return error
+                      // Check if validation error is in the dob field
+                      if (err.errors.dob) {
+                        res.json({ success: false, message: err.errors.dob.message }); // Return error
                       } else {
                         res.json({ success: false, message: err }); // Return any other error not already covered
                       }

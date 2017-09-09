@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-register',
@@ -12,83 +13,89 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder
-  ) {
+  ) 
+    
+  {
     this.createForm(); // Create Angular 2 Form when component loads
+    let now = moment();
+    console.log(now.add(7, 'days').format());
   }
+
+  
 
   // Function to create registration form
   createForm() {
     this.form = this.formBuilder.group({
-      // Email Input
-      email: ['', Validators.compose([
+      // firstname Input
+      firstname: ['', Validators.compose([
         Validators.required, // Field is required
         Validators.minLength(5), // Minimum length is 5 characters
         Validators.maxLength(30), // Maximum length is 30 characters
-        this.validateEmail // Custom validation
+        this.validatefirstname // Custom validation
       ])],
-      // Username Input
-      username: ['', Validators.compose([
+      // lastname Input
+      lastname: ['', Validators.compose([
         Validators.required, // Field is required
         Validators.minLength(3), // Minimum length is 3 characters
         Validators.maxLength(15), // Maximum length is 15 characters
-        this.validateUsername // Custom validation
+        this.validatelastname // Custom validation
       ])],
-      // Password Input
-      password: ['', Validators.compose([
+      // dob Input
+      dob: ['', Validators.compose([
         Validators.required, // Field is required
         Validators.minLength(8), // Minimum length is 8 characters
         Validators.maxLength(35), // Maximum length is 35 characters
-        this.validatePassword // Custom validation
+        this.validatedob // Custom validation
       ])],
-      // Confirm Password Input
+      // Confirm dob Input
       confirm: ['', Validators.required] // Field is required
-    }, { validator: this.matchingPasswords('password', 'confirm') }); // Add custom validator to form for matching passwords
+    }, { validator: this.matchingdobs('dob', 'confirm') }); // Add custom validator to form for matching dobs
   }
 
   // Function to validate e-mail is proper format
-  validateEmail(controls) {
-    // Create a regular expression
-    const regExp = new RegExp(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
-    // Test email against regular expression
-    if (regExp.test(controls.value)) {
-      return null; // Return as valid email
-    } else {
-      return { 'validateEmail': true } // Return as invalid email
-    }
-  }
-
-  // Function to validate username is proper format
-  validateUsername(controls) {
+  validatefirstname(controls) {
     // Create a regular expression
     const regExp = new RegExp(/^[a-zA-Z0-9]+$/);
-    // Test username against regular expression
+    // Test firstname against regular expression
     if (regExp.test(controls.value)) {
-      return null; // Return as valid username
+      return null; // Return as valid firstname
     } else {
-      return { 'validateUsername': true } // Return as invalid username
+      return { 'validatefirstname': true } // Return as invalid firstname
     }
   }
 
-  // Function to validate password
-  validatePassword(controls) {
+  // Function to validate lastname is proper format
+  validatelastname(controls) {
+    // Create a regular expression
+    const regExp = new RegExp(/^[a-zA-Z0-9]+$/);
+    // Test lastname against regular expression
+    if (regExp.test(controls.value)) {
+      return null; // Return as valid lastname
+    } else {
+      return { 'validatelastname': true } // Return as invalid lastname
+    }
+  }
+
+  // Function to validate dob
+  validatedob(controls) {
     // Create a regular expression
     const regExp = new RegExp(/^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[\d])(?=.*?[\W]).{8,35}$/);
-    // Test password against regular expression
+    // Test dob against regular expression
     if (regExp.test(controls.value)) {
-      return null; // Return as valid password
+      return null; // Return as valid dob
     } else {
-      return { 'validatePassword': true } // Return as invalid password
+      return { 'validatedob': true } // Return as invalid dob
     }
   }
 
-  // Funciton to ensure passwords match
-  matchingPasswords(password, confirm) {
+  // Funciton to ensure dobs match
+  matchingdobs(dob, confirm) {
     return (group: FormGroup) => {
       // Check if both fields are the same
-      if (group.controls[password].value === group.controls[confirm].value) {
+      if (group.controls[dob].value === group.controls[confirm].value) {
         return null; // Return as a match
       } else {
-        return { 'matchingPasswords': true } // Return as error: do not match
+        return { 'matchingdobs': true } // Return as error: do not match
       }
     }
   }
