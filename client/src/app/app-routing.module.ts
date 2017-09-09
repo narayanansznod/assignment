@@ -1,26 +1,21 @@
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
-import { HomeComponent } from './components/home/home.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { NavbarComponent } from "./components/navbar/navbar.component";
+import { RegisterComponent } from "./components/register/register.component";
 
+
+// Our Array of Angular 2 Routes
 const appRoutes: Routes = [
-    {
-      path: 'home',
-      component: HomeComponent 
-    },
-    {
-      path: 'dashboard',
-      component: DashboardComponent 
-    },
-    { path: '**', component: HomeComponent } 
-  ];
-  
-  @NgModule({
-    declarations: [],
-    imports: [RouterModule.forRoot(appRoutes)],
-    providers: [],
-    bootstrap: [],
-    exports: [RouterModule]
-  })
-  
-  export class AppRoutingModule { }
+  {path:'navbar', component: NavbarComponent},
+  {path:'register', component: RegisterComponent}
+];
+
+@NgModule({
+  declarations: [],
+  imports: [RouterModule.forRoot(appRoutes)],
+  providers: [],
+  bootstrap: [],
+  exports: [RouterModule]
+})
+
+export class AppRoutingModule { }
