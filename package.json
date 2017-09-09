@@ -25,6 +25,7 @@
     "all": "0.0.0",
     "array-flatten": "^2.1.1",
     "async": "^2.5.0",
+    "bcrypt-nodejs": "0.0.3",
     "bluebird": "^3.5.0",
     "body-parser": "^1.17.2",
     "bson": "^1.0.4",
