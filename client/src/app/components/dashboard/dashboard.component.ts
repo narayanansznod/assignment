@@ -7,8 +7,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
+  messageClass;
+  message;
+  newPost = false;
+  loadingBlogs = false;
+
   constructor() { }
 
+  newBlogForm(){
+    this.newPost = true;
+  }
+
+  reloadBlogs(){
+     this.loadingBlogs = true;
+     setTimeout(() => {
+       this.loadingBlogs = false;
+     }, 4000);
+  }
   ngOnInit() {
   }
 

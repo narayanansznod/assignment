@@ -1,3 +1,17 @@
-<p>
-  dashboard works!
-</p>
+<h1 class="page-header">Blog Feed</h1>
+
+<!--
+<div class="row show-hide-message" *ngIf="message && newPost">
+  <div [ngClass]="messageClass">
+    {{ message }}
+  </div>
+</div> -->
+
+<!-- New Post Button -->
+<button type="button" name="button" class="btn btn-warning" *ngIf="!newPost" (click)="newBlogForm()">New Post</button>
+
+<!-- Reload Button -->
+<button [disabled]="loadingBlogs" type="button" name="button" class="btn btn-default" *ngIf="!newPost" (click)="reloadBlogs()"><span class="glyphicon glyphicon-repeat"></span>&nbsp;&nbsp;Reload</button>
+
+<br />
+<br />
