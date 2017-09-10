@@ -1,52 +1,76 @@
 # assignment
 
-MEAN Stack with Angular 2 Tutorial
-This is an application demonstrating the basic components needed for a Single Page Application using MongoDB, ExpressJS, Angular 2, and NodeJS.
-A working example can be found here. Additionally, a YouTube tutorial series illustrating how to create this application from scratch can be found here.
-Requirements
-NodeJS
-MongoDB
-@angular/cli
-Description
-This applications demonstrates how to setup a RESTful API using NodeJS with Angular 2 Frontend. The application features a blog feed, where users can post comments, like posts, dislike posts, and create/edit/delete their own blog posts.
-Installation
-Install all dependencies in package.json file. This can be done by navigating to the root directory in the command line interface and running the following command:
+This is application is built using MongoDB, ExpressJS, Angular 4, Bootstrap 3 and NodeJS.
+
+
+Installation and Requirements
+
 $ npm install
+
 Next, install all of the Angular 2 development dependencies in package.json file:
+
 $ cd client/
+
 $ npm install
+
 Installation is complete. Navigate to the root directory and then:  
+
 Production
+
 -- In root directory:
+
 $ npm run build
+
 $ npm start
+
 -- Access production server at: http://localhost:8080
+
 Development
+
 $ cd client/
+
 $ ng serve
+
 -- In another window, from root directory run:
+
 $ npm start
+
 -- Access development server at: http://localhost:4200
+
 -- Access API at: http://localhost:8080
 
 Installing a Project in a New Computer. 
  
 Follow the Instructions to install these softwares: 
+
 https://www.tutorialspoint.com/angular2/angular2_environment.htm 
+
 Setting up the Environment(Skip this step, unless npm is not recognized) 
+
 Right Click on This PC 
+
 Advanced system settings(left side 4th option) 
+
 Click on Environment Variables 
+
 Click on Path 
+
 Click Edit button 
-Add ";C:\Program Files\nodejs" to the end 
- Save all 
+
+Add ";C:\Program Files\nodejs" to the end
+
+ Save all
+ 
  Restart the Computer 
  
 For configuring MongoDB 
+
 Open CMD in admin Mode 
+
 C:\Windows\system32> 
+
 Cd C:\Program Files\MongoDB\Server\3.4\bin 
+
 C:\Program Files\MongoDB\Server\3.4\bin>msiexec.exe /q /i mongodb-win32-x86_64-2008plus-ssl-3.4.4-signed.msi INSTALLLOCATION="C:\Program Files\MongoDB\Server\3.4\" ADDLOCAL="all" 
  
 C:\Program Files\MongoDB\Server\3.4\bin>md \data\db 
@@ -76,35 +100,58 @@ C:\Program Files\MongoDB\Server\3.4>cd bin
 C:\Program Files\MongoDB\Server\3.4\bin>mongod.exe --config "C:\Program Files\MongoDB\Server\3.4\mongod.cfg" --install 
  
 C:\Program Files\MongoDB\Server\3.4\bin>net start MongoDB 
+
 The MongoDB service is starting.. 
+
 The MongoDB service was started successfully. 
+
 Installing the Github branch 
+
 Download the Zip file and unzip in the computer 
+
 Or 
+
 Open Git bash and Navigate to  
      $ cd /c/users/naray 
  
 Open the Visual Studio Code 
+
 Open the folder 
  
 cd client 
+
 npm install -g @angular/cli@latest 
+
 npm install (This will do the magic) 
+
 ng serve 
  
 Install Angular Material 
+
 Install Express 
-Selvaraj@DESKTOP-R8HNVHQ MINGW32 /c/users/naray/MEAN-project-server-setup (Angular-Material-Form) $ npm install express –save 
+
+Selvaraj@DESKTOP-R8HNVHQ MINGW32 /c/users/naray/MEAN-project-server-setup (Angular-Material-Form) $ npm install express –save
+
 Install Mongoose 
+
 Install Nodemon 
+
 Install Robo 3T  
+
 Install Postman 
+
 Install body-parser 
- 
+
+Install Cors
+
 In visual studio code navigate to  
+
 PS C:\Users\naray\MEAN-project-server-setup\client> 
+
 npm install -g @angular/cli 
+
 npm install  
+
 npm install @angular/common@latest @angular/compiler@latest @angular/compiler-cli@latest @angular/core@latest @angular/forms@latest @angular/http@latest @angular/platform-browser@latest @angular/platform-browser-dynamic@latest @angular/platform-server@latest @angular/router@latest @angular/animations@latest typescript@latest --save 
 npm install @angular/common@4.4.0-RC.0  - Install all the warnings like this 
   
