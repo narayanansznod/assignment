@@ -14,6 +14,8 @@ export class RegisterComponent implements OnInit {
   form: FormGroup;
   message;
   messageClass;
+  newPost = false;
+  loadingBlogs = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -123,6 +125,15 @@ export class RegisterComponent implements OnInit {
       }, 2000);
     }
     });
+  }
+
+  newBlogForm() {
+    this.newPost=true;
+  }
+
+  reloadBlogs() {
+    this.loadingBlogs=true;
+
   }
 
   ngOnInit() {

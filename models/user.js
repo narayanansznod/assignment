@@ -14,7 +14,7 @@ let firstnameLengthChecker = (firstname) => {
     return false; // Return error
   } else {
     // Check the length of firstname string
-    if (firstname.length < 5 || firstname.length > 30) {
+    if (firstname.length < 2 || firstname.length > 30) {
       return false; // Return error if not within proper length
     } else {
       return true; // Return as valid firstname
@@ -129,7 +129,7 @@ const dobValidators = [
 const userSchema = new Schema({
   firstname: { type: String, required: true, unique: true, lowercase: true, validate: firstnameValidators },
   lastname: { type: String, required: true, unique: true, lowercase: true, validate: lastnameValidators },
-  dob: { type: Date, required: true, validate: dobValidators }
+  dob: { type: Date, required: true, }
 });
 
 // Export Module/Schema

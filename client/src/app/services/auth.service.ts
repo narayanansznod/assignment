@@ -9,10 +9,15 @@ export class AuthService {
 
   constructor(private http: Http
   ) { }
+  
 
   // Function to register user accounts
   registerUser(user) {
     return this.http.post(this.domain + '/authentication/register', user).map(res => res.json());
+  }
+
+  getProfile() {
+    return this.http.get(this.domain + 'authentication/profile').map(res => res.json());
   }
 
 }

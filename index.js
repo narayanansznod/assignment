@@ -8,6 +8,7 @@ const mongoose = require('mongoose'); // Node Tool for MongoDB
 const config = require('./config/database'); // Mongoose Config
 const path = require('path'); // NodeJS Package for file paths
 const authentication = require('./routes/authentication')(router); // Import Authentication Routes
+const employeeroutes = require('./routes/employeeroutes')(router); 
 const bodyParser = require('body-parser'); // Parse incoming request bodies in a middleware before your handlers, available under the req.body property.
 const cors = require('cors');
 // Database Connection
@@ -26,6 +27,7 @@ app.use(bodyParser.urlencoded({ extended: false })); // parse application/x-www-
 app.use(bodyParser.json()); // parse application/json
 app.use(express.static(__dirname + '/client/dist/')); // Provide static directory for frontend
 app.use('/authentication', authentication);
+app.use('/employeeroutes', employeeroutes);
 
 // Connect server to Angular 2 Index.html
 app.get('*', (req, res) => {

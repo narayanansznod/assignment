@@ -8,6 +8,8 @@ import { RegisterComponent } from "./components/register/register.component";
 import { AppRoutingModule } from "./app-routing.module";
 import { ListingComponent } from './components/listing/listing.component';
 import { AuthService } from './services/auth.service';
+import { EmployeeComponent } from './components/employee/employee.component';
+import { EmployeeService } from './services/employee.service';
 
 
 @NgModule({
@@ -15,7 +17,8 @@ import { AuthService } from './services/auth.service';
     AppComponent,
     NavbarComponent,
     RegisterComponent,
-    ListingComponent
+    ListingComponent,
+    EmployeeComponent,
   ],
   imports: [
     BrowserModule,
@@ -23,7 +26,7 @@ import { AuthService } from './services/auth.service';
     AppRoutingModule,
     HttpModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, EmployeeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,4 +1,6 @@
 const User = require('../models/user'); // Import User Model Schema
+const jwt = require('jsonwebtoken');
+const config = require('../config/database');
 
 module.exports = (router) => {
   /* ==============
@@ -19,8 +21,8 @@ module.exports = (router) => {
         } else {
           // Create new user object and apply user input
           let user = new User({
-            firstname: req.body.firstname.toLowerCase(),
-            lastname: req.body.lastname.toLowerCase(),
+            firstname: req.body.firstname,
+            lastname: req.body.lastname,
             dob: req.body.dob
           });
           // Save user to database
@@ -45,6 +47,7 @@ module.exports = (router) => {
                       if (err.errors.dob) {
                         res.json({ success: false, message: err.errors.dob.message }); // Return error
                       } else {
+                        
                         res.json({ success: false, message: err }); // Return any other error not already covered
                       }
                     }
@@ -54,7 +57,9 @@ module.exports = (router) => {
                 }
               }
             } else {
-              res.json({ success: true, message: 'Acount registered!' }); // Return success
+              const token = jwt.sign({firstname: user._id}, config.secret, {expiresIn: '24h'});
+              
+              res.json({ success: true, message: 'Acount registered!', token: token }); // Return success
             }
           });
         }
