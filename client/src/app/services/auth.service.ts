@@ -13,7 +13,7 @@ export class AuthService {
 
   // Function to register user accounts
   registerUser(user) {
-    return this.http.post(this.domain + '/authentication/register', user).map(res => res.json());
+    return this.http.post(this.domain + 'authentication/register', user).map(res => res.json());
   }
 
   getProfile() {

@@ -23,9 +23,9 @@ export class EmployeeService {
   }
 
   // Function to create a new blog post
-  newBlog(blog) {
+  newBlog(employee) {
     this.createAuthenticationHeaders(); // Create headers
-    return this.http.post(this.domain + 'blogs/newBlog', blog, this.options).map(res => res.json());
+    return this.http.post(this.domain + 'employeeroutes/empDet', employee, this.options).map(res => res.json());
   }
 
 }

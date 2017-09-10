@@ -81,4 +81,4 @@ const employeeSchema = new Schema({
 });
 
 // Export Module/Schema
-module.exports = mongoose.model('employee', employeeSchema);
+module.exports = mongoose.model('Employee', employeeSchema);

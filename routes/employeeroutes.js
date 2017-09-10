@@ -6,7 +6,7 @@ module.exports = (router) => {
   /* ==============
      Register Route
   ============== */
-  router.post('/employee', (req, res) => {
+  router.post('/empDet', (req, res) => {
     // Check if firstname was provided
     if (!req.body.firstname) {
       res.json({ success: false, message: 'You must provide a firstname' }); // Return error
@@ -20,7 +20,7 @@ module.exports = (router) => {
           res.json({ success: false, message: 'You must provide a dob' }); // Return error
         } else {
           // Create new user object and apply user input
-          let employee = new Employee({
+          const employee = new Employee({
             firstname: req.body.firstname,
             lastname: req.body.lastname,
             dob: req.body.dob
@@ -63,6 +63,20 @@ module.exports = (router) => {
       }
     }
   });
+
+  router.get('/employee', (req, res) => {
+    Employee.find({}, (err, employee) => {
+      if(err) {
+        res.json({ success: false, message: err});
+      } else {
+        if(!employee) {
+          res.json({success: false, message: "No employee found"});
+        } else {
+          res.json({ success: true, employee: employee });
+        }
+      }
+    })
+  })
 
   return router; // Return router object to main index.js
 }

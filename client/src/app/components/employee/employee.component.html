@@ -17,41 +17,42 @@
 <br />
 
 <form [formGroup]="form" name="blogForm" (submit)="onBlogSubmit()" *ngIf="newPost">
-  <!-- Title Input -->
+  <!-- firstname Input -->
   <div class="form-group">
-    <label for="title">First Name</label>
-    <div [ngClass]="{'has-success': form.controls.title.valid, 'has-error': form.controls.title.dirty && form.controls.title.errors}">
-      <input type="text" name="title" class="form-control" placeholder="*Blog Title" autocomplete="off" formControlName="title" />
+    <label for="firstname">First Name</label>
+    <div [ngClass]="{'has-success': form.controls.firstname.valid, 'has-error': form.controls.firstname.dirty && form.controls.firstname.errors}">
+      <input type="text" name="firstname" class="form-control" placeholder="*Employee firstname" autocomplete="off" formControlName="firstname" />
       <ul class="help-block">
-        <li *ngIf="form.controls.title.dirty && form.controls.title.errors?.required">This field is required.</li>
-        <li *ngIf="(form.controls.title.dirty && form.controls.title.errors?.minlength) || (form.controls.title.dirty && form.controls.title.errors?.maxlength)">Max length: 50, Min length: 5</li>
-        <li *ngIf="form.controls.title.dirty && form.controls.title.errors?.alphaNumericValidation">Must be a letter or number</li>
+        <li *ngIf="form.controls.firstname.dirty && form.controls.firstname.errors?.required">This field is required.</li>
+        <li *ngIf="(form.controls.firstname.dirty && form.controls.firstname.errors?.minlength) || (form.controls.firstname.dirty && form.controls.firstname.errors?.maxlength)">Max length: 50, Min length: 5</li>
+        <li *ngIf="form.controls.firstname.dirty && form.controls.firstname.errors?.alphaNumericValidation">Must be a letter or number</li>
       </ul>
     </div>
   </div>
 
-  <!-- Body Input -->
+  <!-- lastname Input -->
   <div class="form-group">
-    <label for="body">Last Name</label>
-    <div [ngClass]="{'has-success': form.controls.body.valid, 'has-error': form.controls.body.dirty && form.controls.body.errors}">
-      <input type="text" name="body" class="form-control" placeholder="*Blog body" autocomplete="off" formControlName="body" />
+    <label for="lastname">Last Name</label>
+    <div [ngClass]="{'has-success': form.controls.lastname.valid, 'has-error': form.controls.lastname.dirty && form.controls.lastname.errors}">
+      <input type="text" name="lastname" class="form-control" placeholder="*Employee lastname" autocomplete="off" formControlName="lastname" />
       <ul class="help-block">
-        <li *ngIf="form.controls.body.dirty && form.controls.body.errors?.required">This field is required.</li>
-        <li *ngIf="(form.controls.body.dirty && form.controls.body.errors?.minlength) || (form.controls.body.dirty && form.controls.body.errors?.maxlength)">Max length: 500, Min length: 5</li>
+        <li *ngIf="form.controls.lastname.dirty && form.controls.lastname.errors?.required">This field is required.</li>
+        <li *ngIf="(form.controls.lastname.dirty && form.controls.lastname.errors?.minlength) || (form.controls.lastname.dirty && form.controls.lastname.errors?.maxlength)">Max length: 500, Min length: 5</li>
       </ul>
     </div>
   </div>
 
-  <!-- <div class="form-group">
+  <div class="form-group">
     <label for="dob">Date of Birth</label>
     <div [ngClass]="{'has-success': form.controls.dob.valid, 'has-error': form.controls.dob.dirty && form.controls.dob.errors}">
-      <input type="Date" name="dob" class="form-control" placeholder="*Blog dob" autocomplete="off" formControlName="dob" />
+      <input type="Date" name="dob" class="form-control" placeholder="*Employee dob" autocomplete="off" formControlName="dob" />
       <ul class="help-block">
         <li *ngIf="form.controls.dob.dirty && form.controls.dob.errors?.required">This field is required.</li>
         <li *ngIf="(form.controls.dob.dirty && form.controls.dob.errors?.minlength) || (form.controls.dob.dirty && form.controls.dob.errors?.maxlength)">Max length: 500, Min length: 5</li>
       </ul>
     </div>
-  </div> -->
+  </div>
+
   
   <!-- Go Back Button -->
   <button [disabled]="processing" type="button" name="button" (click)="goBack()" class="btn btn-warning">Go Back/Cancel</button>
@@ -71,8 +72,8 @@
       <h3 class="panel-firstname">Post firstname</h3>
     </div>
 
-    <!-- Panel Body -->
-    <div class="panel-body">
+    <!-- Panel lastname -->
+    <div class="panel-lastname">
       Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
       in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
     </div>

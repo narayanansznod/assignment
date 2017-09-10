@@ -86,5 +86,8 @@
     "unpipe": "^1.0.0",
     "utils-merge": "^1.0.0",
     "vary": "^1.1.1"
+  },
+  "devDependencies": {
+    "ip": "^1.1.5"
   }
 }

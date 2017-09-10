@@ -29,33 +29,40 @@ export class EmployeeComponent implements OnInit {
   // Function to create new blog form
   createNewBlogForm() {
     this.form = this.formBuilder.group({
-      title: ['', Validators.compose([
+      firstname: ['', Validators.compose([
         Validators.required,
         Validators.maxLength(50),
         Validators.minLength(5),
         this.alphaNumericValidation
       ])],
-      body: ['', Validators.compose([
+      lastname: ['', Validators.compose([
         Validators.required,
         Validators.maxLength(500),
         Validators.minLength(5)
-      ])]
+      ])],
+      dob: ['', Validators.compose([
+        Validators.required,
+        Validators.maxLength(50),
+        Validators.minLength(5)
+      ])],
     })
   }
 
   // Enable new blog form
   enableFormNewBlogForm() {
-    this.form.get('title').enable(); // Enable title field
-    this.form.get('body').enable(); // Enable body field
+    this.form.get('firstname').enable(); // Enable firstname field
+    this.form.get('lastname').enable(); // Enable lastname field
+    this.form.get('dob').enable(); // Enable lastname field
   }
 
   // Disable new blog form
   disableFormNewBlogForm() {
-    this.form.get('title').disable(); // Disable title field
-    this.form.get('body').disable(); // Disable body field
+    this.form.get('firstname').disable(); // Disable firstname field
+    this.form.get('lastname').disable(); // Disable lastname field
+    this.form.get('dob').disable(); // Enable lastname field
   }
 
-  // Validation for title
+  // Validation for firstname
   alphaNumericValidation(controls) {
     const regExp = new RegExp(/^[a-zA-Z0-9 ]+$/); // Regular expression to perform test
     // Check if test returns false or true
@@ -87,18 +94,20 @@ export class EmployeeComponent implements OnInit {
 
   // Function to submit a new blog post
   onBlogSubmit() {
+    console.log('Form');
     this.processing = true; // Disable submit button
     this.disableFormNewBlogForm(); // Lock form
 
     // Create blog object from form fields
-    const blog = {
-      title: this.form.get('title').value, // Title field
-      body: this.form.get('body').value, // Body field
+    const employee = {
+      firstname: this.form.get('firstname').value, // firstname field
+      lastname: this.form.get('lastname').value, // lastname field
+      dob: this.form.get('dob').value, // lastname field
       createdBy: this.username // CreatedBy field
     }
 
     // Function to save blog into database
-    this.employeeService.newBlog(blog).subscribe(data => {
+    this.employeeService.newBlog(employee).subscribe(data => {
       // Check if blog was saved to database or not
       if (!data.success) {
         this.messageClass = 'alert alert-danger'; // Return error class
@@ -109,13 +118,13 @@ export class EmployeeComponent implements OnInit {
         this.messageClass = 'alert alert-success'; // Return success class
         this.message = data.message; // Return success message
         // Clear form data after two seconds
-        setTimeout(() => {
-          this.newPost = false; // Hide form
-          this.processing = false; // Enable submit button
-          this.message = false; // Erase error/success message
-          this.form.reset(); // Reset all form fields
-          this.enableFormNewBlogForm(); // Enable the form fields
-        }, 2000);
+        // setTimeout(() => {
+        //   this.newPost = false; // Hide form
+        //   this.processing = false; // Enable submit button
+        //   this.message = false; // Erase error/success message
+        //   this.form.reset(); // Reset all form fields
+        //   this.enableFormNewBlogForm(); // Enable the form fields
+        // }, 2000);
       }
     });
   }
@@ -126,6 +135,7 @@ export class EmployeeComponent implements OnInit {
   }
 
   ngOnInit() {
+
     // Get profile username on page load
   }
 
