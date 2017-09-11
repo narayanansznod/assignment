@@ -65,5 +65,26 @@ module.exports = (router) => {
     }
   });
 
+  // router.get('/listing', (req, res) => {
+  //   res.send('test');
+  // });
+
+  router.get('/listing', (req, res) => {
+    // Search database for all blog posts
+    User.find({}, (err, authentication) => {
+      // Check if error was found or not
+      if (err) {
+        res.json({ success: false, message: err }); // Return error message
+      } else {
+        // Check if blogs were found in database
+        if (!authentication) {
+          res.json({ success: false, message: 'No user found.' }); // Return error of no blogs found
+        } else {
+          res.json({ success: true, authentication: authentication }); // Return success and blogs array
+        }
+      }
+    }).sort({ '_id': -1 }); // Sort blogs from newest to oldest
+  });
+
   return router; // Return router object to main index.js
 }
