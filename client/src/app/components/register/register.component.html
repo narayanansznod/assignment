@@ -48,8 +48,8 @@
       <!-- Validation -->
       <ul class="help-block">
         <li *ngIf="form.controls.dob.errors?.required && form.controls.dob.dirty">This field is required</li>
-        <li *ngIf="form.controls.lastname.errors?.minlength && form.controls.lastname.dirty || form.controls.lastname.errors?.maxlength && form.controls.lastname.dirty">Minimum characters: 2, Maximum characters: 30</li>
-        <li *ngIf="form.controls.lastname.errors?.validatelastname && form.controls.lastname.dirty">lastname must not have any special characters</li>
+        <li *ngIf="form.controls.dob.errors?.minlength && form.controls.dob.dirty || form.controls.dob.errors?.maxlength && form.controls.dob.dirty">Minimum characters: 2, Maximum characters: 30</li>
+        <li *ngIf="form.controls.dob.errors?.validatedob && form.controls.dob.dirty">Dob must not have any special characters</li>
       </ul>
     </div>
   </div>
@@ -61,7 +61,5 @@
   <br>
  
 </form>
-
-<p>{{ form.controls.firstname.errors }}</p>
 
 <!-- Registration Form /-->
