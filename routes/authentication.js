@@ -57,9 +57,7 @@ module.exports = (router) => {
                 }
               }
             } else {
-              const token = jwt.sign({firstname: user._id}, config.secret, {expiresIn: '24h'});
-              
-              res.json({ success: true, message: 'Acount registered!', token: token }); // Return success
+              res.json({ success: true, message: 'Acount Created!' }); // Return success
             }
           });
         }

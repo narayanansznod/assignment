@@ -6,6 +6,8 @@ import 'rxjs/add/operator/map';
 export class AuthService {
 
   domain = "http://localhost:8080"; // Development Domain - Not Needed in Production
+  user;
+  options;
 
   constructor(private http: Http
   ) { }
@@ -13,11 +15,11 @@ export class AuthService {
 
   // Function to register user accounts
   registerUser(user) {
-    return this.http.post(this.domain + 'authentication/register', user).map(res => res.json());
+    return this.http.post(this.domain + '/authentication/register', user).map(res => res.json());
   }
 
   getProfile() {
-    return this.http.get(this.domain + 'authentication/profile').map(res => res.json());
+    return this.http.get(this.domain + '/authentication/profile', this.options ).map(res => res.json());
   }
 
 }

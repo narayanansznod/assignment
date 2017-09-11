@@ -10,7 +10,7 @@
 <!-- Registration Form -->
 <form [formGroup]="form" (submit)="onRegisterSubmit()">
 
-  firstname Input
+
   <div class="form-group">
     <label for="firstname">First Name</label>
     <div [ngClass]="{'has-error': (form.controls.firstname.errors && form.controls.firstname.dirty), 'has-success': !form.controls.firstname.errors}">
@@ -62,6 +62,6 @@
  
 </form>
 
-
+<p>{{ form.controls.firstname.errors }}</p>
 
 <!-- Registration Form /-->
