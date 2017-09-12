@@ -155,3 +155,6 @@ npm install
 npm install @angular/common@latest @angular/compiler@latest @angular/compiler-cli@latest @angular/core@latest @angular/forms@latest @angular/http@latest @angular/platform-browser@latest @angular/platform-browser-dynamic@latest @angular/platform-server@latest @angular/router@latest @angular/animations@latest typescript@latest --save 
 npm install @angular/common@4.4.0-RC.0  - Install all the warnings like this 
   
+-------------------------------------------------------------------------------------------------------------------------------
+
+We might need to install https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi?utm_source=chrome-app-launcher-info-dialog for CORS
