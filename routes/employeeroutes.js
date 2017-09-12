@@ -65,14 +65,14 @@ module.exports = (router) => {
   });
 
   router.get('/empGet', (req, res) => {
-    Employee.find({}, (err, employee) => {
+    Employee.find({}, (err, employeeroutes) => {
       if(err) {
         res.json({ success: false, message: err});
       } else {
-        if(!employee) {
+        if(!employeeroutes) {
           res.json({success: false, message: "No employee found"});
         } else {
-          res.json({ success: true, employee: employee });
+          res.json({ success: true, employeeroutes: employeeroutes });
         }
       }
     })
