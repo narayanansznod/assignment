@@ -65,20 +65,34 @@
 <!-- Panel Start -->
 <div *ngIf="!newPost">
   <!-- Panel Outer Layer -->
-  <div class="panel panel-primary" *ngFor="let employee of blogPosts">
+  <div class="panel panel-primary" >
 
     <!-- Panel firstname -->
-    <div class="panel-heading">
-      <h3 class="panel-title">{{ employee.firstname }}</h3>
-    </div>
-
+    <!-- <div class="panel-heading">
+      <h3 class="panel-title"></h3>
+    </div> -->
+    <thead>
+        <tr>
+          <th>Firstname</th>
+          <th>Lastname</th>
+          <th>DOB</th>
+        </tr>
+      </thead>
     <!-- Panel lastname -->
-    <div class="panel-body">
-      {{ employee.lastname }}
-    </div>
+    <table class="table table-bordered table-hover" *ngFor="let employee of blogPosts">
+     
+      <tbody>
+        <tr>
+          <td>{{employee.firstname}}</td>
+          <td>{{employee.lastname}}</td>
+          <td>{{employee.dob}}</td>
+      </tbody>
+    </table>
 
     <!-- Panel Footer Start -->
     <div class="panel-footer">
+
+      
 
       <!-- Edit Button -->
       <a href="#"><button type="button" name="button" class="btn btn-sm btn-info">Edit</button></a>
@@ -89,7 +103,6 @@
 
     </div>
     <!-- Panel Footer End -->
-
   </div>
   <!-- Panel Outer Layer -->
 </div>

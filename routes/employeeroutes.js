@@ -75,7 +75,7 @@ module.exports = (router) => {
           res.json({ success: true, employeeroutes: employeeroutes });
         }
       }
-    })
+    }).sort({ '_id': -1 });
   })
 
   return router; // Return router object to main index.js
