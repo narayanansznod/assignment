@@ -129,7 +129,7 @@ const dobValidators = [
 const userSchema = new Schema({
   firstname: { type: String, required: true, unique: true, lowercase: true, validate: firstnameValidators },
   lastname: { type: String, required: true, unique: true, lowercase: true, validate: lastnameValidators },
-  dob: { type: Date, required: true, }
+  dob: { type: Date,  default: Date.now }
 });
 
 // Export Module/Schema

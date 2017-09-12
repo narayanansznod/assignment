@@ -47,10 +47,10 @@ export class RegisterComponent implements OnInit {
         this.validatelastname // Custom validation
       ])],
       // dob Input
-      dob: ['', 
-        Validators.pattern,
-        this.validatedob // Field is required
-      ],
+      dob: ['', Validators.compose([
+        Validators.required, // Field is required
+        // this.validatedob // Custom validation
+      ])],
       // Confirm dob Input
       confirm: ['', Validators.required] // Field is required
     }, { validator: this.matchingdobs('dob', 'confirm') }); // Add custom validator to form for matching dobs
