@@ -17,6 +17,7 @@ export class EmployeeComponent implements OnInit {
   form;
   processing = false;
   username;
+  blogPosts;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -81,6 +82,7 @@ export class EmployeeComponent implements OnInit {
   // Reload blogs on current page
   reloadBlogs() {
     this.loadingBlogs = true; // Used to lock button
+    this.getBlog();
     // Get All Blogs
     setTimeout(() => {
       this.loadingBlogs = false; // Release button lock after four seconds
@@ -117,14 +119,15 @@ export class EmployeeComponent implements OnInit {
       } else {
         this.messageClass = 'alert alert-success'; // Return success class
         this.message = data.message; // Return success message
+        this.getBlog();
         // Clear form data after two seconds
-        // setTimeout(() => {
-        //   this.newPost = false; // Hide form
-        //   this.processing = false; // Enable submit button
-        //   this.message = false; // Erase error/success message
-        //   this.form.reset(); // Reset all form fields
-        //   this.enableFormNewBlogForm(); // Enable the form fields
-        // }, 2000);
+        setTimeout(() => {
+          this.newPost = false; // Hide form
+          this.processing = false; // Enable submit button
+          this.message = false; // Erase error/success message
+          this.form.reset(); // Reset all form fields
+          this.enableFormNewBlogForm(); // Enable the form fields
+        }, 2000);
       }
     });
   }
@@ -134,8 +137,14 @@ export class EmployeeComponent implements OnInit {
     window.location.reload(); // Clear all variable states
   }
 
-  ngOnInit() {
+  getBlog() {
+    this.employeeService.getBlog().subscribe(data => {
+      this.blogPosts = data.employee;
+    })
+  }
 
+  ngOnInit() {
+    this.getBlog();
     // Get profile username on page load
   }
 

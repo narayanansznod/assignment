@@ -28,4 +28,9 @@ export class EmployeeService {
     return this.http.post(this.domain + '/employeeroutes/empDet', employee, this.options).map(res => res.json());
   }
 
+  getBlog() {
+    this.createAuthenticationHeaders(); // Create headers
+    return this.http.get(this.domain + '/employeeroutes/empGet', this.options).map(res => res.json());
+  }
+
 }
