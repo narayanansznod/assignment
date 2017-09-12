@@ -16,7 +16,6 @@ export class EmployeeComponent implements OnInit {
   loadingBlogs = false;
   form;
   processing = false;
-  username;
   blogPosts;
 
   constructor(
@@ -104,8 +103,7 @@ export class EmployeeComponent implements OnInit {
     const employee = {
       firstname: this.form.get('firstname').value, // firstname field
       lastname: this.form.get('lastname').value, // lastname field
-      dob: this.form.get('dob').value, // lastname field
-      createdBy: this.username // CreatedBy field
+      dob: this.form.get('dob').value // lastname field
     }
 
     // Function to save blog into database
@@ -137,13 +135,17 @@ export class EmployeeComponent implements OnInit {
     window.location.reload(); // Clear all variable states
   }
 
+   
+ // Function to get all employees from the database
   getBlog() {
     this.employeeService.getBlog().subscribe(data => {
-      this.blogPosts = data.employee;
+      this.blogPosts = data.employeeroutes;
     })
   }
 
   ngOnInit() {
+
+    
     this.getBlog();
     // Get profile username on page load
   }
