@@ -1,0 +1,22 @@
+<h1 class="page-header">Edit Employee</h1>
+
+<div class="row show-hide-message" *ngIf="message">
+  <div [ngClass]="messageClass">
+    {{message}}
+  </div>
+</div>
+
+<form (submit)="updateEmployeeSubmit">
+  <div class="form-group">
+    <label for="firstname">FirstName</label>
+    <input type="text" name="firstname" placeholder="*Employee FirstName" class="form-control" [(ngModel)]="employee.firstname" />
+  </div>
+  <div class="form-group">
+    <label for="lastname">LastName</label>
+    <input type="text" name="lastname" placeholder="*Employee LastName" class="form-control" [(ngModel)]="employee.lastname" />
+  </div>
+  <div class="form-group">
+    <label for="dob">Date of Birth</label>
+    <input type="number" name="dob" placeholder="*Employee DOB" class="form-control" [(ngModel)]="employee.dob" />
+  </div>
+</form>

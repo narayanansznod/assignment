@@ -61,47 +61,39 @@
 
 </form>
 <!-- New Blog Form -->
-
+   
 <!-- Panel Start -->
 <div *ngIf="!newPost">
   <!-- Panel Outer Layer -->
   <div class="panel panel-primary" >
 
     <!-- Panel firstname -->
-    <!-- <div class="panel-heading">
-      <h3 class="panel-title"></h3>
-    </div> -->
-    <thead>
-        <tr>
-          <th>Firstname</th>
-          <th>Lastname</th>
-          <th>DOB</th>
-        </tr>
-      </thead>
+    <div class="panel-heading">
+      <h3 class="panel-title"><table class="inner">
+          <tr>
+              <td>Firstname</td>
+              <td>Lastname</td>
+              <td>DOB</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+          </tr>
+          </table></h3>
+    </div>
+    
     <!-- Panel lastname -->
     <table class="table table-bordered table-hover" *ngFor="let employee of blogPosts">
      
       <tbody>
         <tr>
-          <td>{{employee.firstname}}</td>
+          <td>{{employee.firstname}} </td>
           <td>{{employee.lastname}}</td>
           <td>{{employee.dob}}</td>
+          <td><a [routerLink] = "['/edit-employee', employee._id]"><button type="button" name="button" class="btn btn-sm btn-info">Edit</button></a></td>
+          <td><a [routerLink] = "['/delete-employee', employee._id]"><button type="button" name="button" class="btn btn-sm btn-danger">Delete</button></a></td>
       </tbody>
     </table>
 
-    <!-- Panel Footer Start -->
-    <div class="panel-footer">
-
-      
-
-      <!-- Edit Button -->
-      <a href="#"><button type="button" name="button" class="btn btn-sm btn-info">Edit</button></a>
-      <!-- Delete Button -->
-      <a href="#"><button type="button" name="button" class="btn btn-sm btn-danger">Delete</button></a>
-
-
-
-    </div>
+   
     <!-- Panel Footer End -->
   </div>
   <!-- Panel Outer Layer -->
