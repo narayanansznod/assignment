@@ -17,6 +17,13 @@
   </div>
   <div class="form-group">
     <label for="dob">Date of Birth</label>
-    <input type="number" name="dob" placeholder="*Employee DOB" class="form-control" [(ngModel)]="employee.dob" />
+    <input type="date" name="dob" placeholder="*Employee DOB" class="form-control" [(ngModel)]="employee.dob" />
   </div>
+
+    <!-- Delete Button -->
+    <a [routerLink]="['/delete-employee/', employee._id]"><button  [disabled]="processing"  type="button" name="button" class="btn btn-danger">Delete</button></a>
+    <!-- Go Back Button -->
+    <button [disabled]="processing" type="button" name="button" class="btn btn-success" (click)="goBack()">Go Back</button>
+    <!-- Save Changes Button -->
+    <button [disabled]="processing" type="submit" name="save" class="btn btn-info">Save Changes</button>
 </form>

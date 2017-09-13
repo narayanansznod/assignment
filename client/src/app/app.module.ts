@@ -11,6 +11,8 @@ import { AuthService } from './services/auth.service';
 import { EmployeeComponent } from './components/employee/employee.component';
 import { EmployeeService } from './services/employee.service';
 import { EditEmployeeComponent } from './components/employee/edit-employee/edit-employee.component';
+import { dateFormatPipe } from './components/employee/pipes';
+import { DatePipe } from '@angular/common';
 
 
 @NgModule({
@@ -20,7 +22,8 @@ import { EditEmployeeComponent } from './components/employee/edit-employee/edit-
     RegisterComponent,
     ListingComponent,
     EmployeeComponent,
-    EditEmployeeComponent
+    EditEmployeeComponent,
+    dateFormatPipe
   ],
   imports: [
     BrowserModule,

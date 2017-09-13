@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { EmployeeService } from '../../services/employee.service';
+import { dateFormatPipe } from './pipes'
 
 @Component({
   selector: 'app-employee',
@@ -17,6 +18,8 @@ export class EmployeeComponent implements OnInit {
   form;
   processing = false;
   blogPosts;
+  title:String;
+  currentDate : any;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -24,6 +27,7 @@ export class EmployeeComponent implements OnInit {
     private employeeService: EmployeeService
   ) {
     this.createNewBlogForm(); // Create new blog form on start up
+    this.currentDate = new Date().getTime();
   }
 
   // Function to create new blog form

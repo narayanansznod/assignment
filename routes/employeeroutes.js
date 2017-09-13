@@ -76,7 +76,31 @@ module.exports = (router) => {
         }
       }
     }).sort({ '_id': -1 });
-  })
+  });
+
+  // GET SINGLE BLOG
+
+  router.get('/singleEmp/:id', (req, res) => {
+    // Check if id is present in parameters
+    if (!req.params.id) {
+      res.json({ success: false, message: 'No blog ID was provided.' }); // Return error message
+    } else {
+      // Check if the blog id is found in database
+      Employee.findOne({ _id: req.params.id }, (err, employee) => {
+        // Check if the id is a valid ID
+        if (err) {
+          res.json({ success: false, message: 'Not a valid blog id' }); // Return error message
+        } else {
+          // Check if blog was found by id
+          if (!employee) {
+            res.json({ success: false, message: 'Blog not found.' }); // Return error message
+          } else {
+            res.json({ success: true, employee: employee }); // Return success
+          }
+        }
+      });
+    }
+  });
 
   return router; // Return router object to main index.js
 }

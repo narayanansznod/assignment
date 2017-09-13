@@ -85,15 +85,14 @@
      
       <tbody>
         <tr>
-          <td>{{employee.firstname}} </td>
-          <td>{{employee.lastname}}</td>
-          <td>{{employee.dob}}</td>
-          <td><a [routerLink] = "['/edit-employee', employee._id]"><button type="button" name="button" class="btn btn-sm btn-info">Edit</button></a></td>
-          <td><a [routerLink] = "['/delete-employee', employee._id]"><button type="button" name="button" class="btn btn-sm btn-danger">Delete</button></a></td>
+          <td align="center">{{employee.firstname}} </td>
+          <td align="center">{{employee.lastname}}</td>
+          <td align="center">{{employee.dob | dateFormatPipe}}</td>
+          <td align="center"><a [routerLink] = "['/edit-employee', employee._id]"><button type="button" name="button" class="btn btn-sm btn-info">Edit</button></a></td>
+          <td align="center"><a [routerLink] = "['/delete-employee', employee._id]"><button type="button" name="button" class="btn btn-sm btn-danger">Delete</button></a></td>
       </tbody>
     </table>
 
-   
     <!-- Panel Footer End -->
   </div>
   <!-- Panel Outer Layer -->
