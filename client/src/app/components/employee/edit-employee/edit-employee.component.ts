@@ -10,8 +10,8 @@ import { EmployeeService } from '../../../services/employee.service';
 })
 export class EditEmployeeComponent implements OnInit {
 
-message = false;
-messageClass = false;
+message;
+messageClass;
 employee = {
   firstname: String,
   secondname: String,
@@ -26,6 +26,21 @@ loading = true;
     private router: Router) { }
 
   updateEmployeeSubmit(){
+    this.processing=true;
+    this.employeeService.editBlog(this.employee).subscribe(data => {
+      if(!data.success){
+        this.messageClass ='alert alert-danger';
+        this.message=data.message;
+        this.processing = false;
+
+      } else {
+        this.messageClass='alert alert-success';
+        this.message= data.message;
+        setTimeout(() => {
+          this.router.navigate(['/employee']);
+        }, 2000);
+      }
+    })
     
   }
   goBack() {

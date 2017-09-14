@@ -102,5 +102,27 @@ module.exports = (router) => {
     }
   });
 
+
+  router.put('/updateEmp', (req, res) => {
+       // Check if id was provided
+       if (!req.body._id) {
+        res.json({ success: false, message: 'No employee id provided' }); // Return error message
+      } else {
+        // Check if id exists in database
+        Employee.findOne({ _id: req.body._id }, (err, employee) => {
+          // Check if id is a valid ID
+          if (err) {
+            res.json({ success: false, message: 'Not a valid employee id' }); // Return error message
+          } else {
+            // Check if id was found in the database
+            if (!employee) {
+              res.json({ success: false, message: 'Employee id was not found.' }); // Return error message
+            } else { res.json({ success: true, message: 'Employee Updated!' }); 
+          }
+        }
+      });
+    }
+  });
+
   return router; // Return router object to main index.js
 }
