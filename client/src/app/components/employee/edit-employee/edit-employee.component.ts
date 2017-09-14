@@ -16,7 +16,8 @@ employee;
 processing = false;
 currentUrl;
 loading = true;
-  constructor(   private location: Location,
+  constructor(   
+    private location: Location,
     private activatedRoute: ActivatedRoute,
     private employeeService: EmployeeService,
     private router: Router) { }
@@ -28,7 +29,6 @@ loading = true;
         this.messageClass ='alert alert-danger';
         this.message = data.message;
         this.processing = false;
-
       } else {
         this.messageClass='alert alert-success';
         this.message= data.message;

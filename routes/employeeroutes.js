@@ -66,11 +66,11 @@ module.exports = (router) => {
 
   router.get('/empGet', (req, res) => {
     Employee.find({}, (err, employeeroutes) => {
-      if(err) {
-        res.json({ success: false, message: err});
+      if (err) {
+        res.json({ success: false, message: err });
       } else {
-        if(!employeeroutes) {
-          res.json({success: false, message: "No employee found"});
+        if (!employeeroutes) {
+          res.json({ success: false, message: "No employee found" });
         } else {
           res.json({ success: true, employeeroutes: employeeroutes });
         }
@@ -78,20 +78,20 @@ module.exports = (router) => {
     }).sort({ '_id': -1 });
   });
 
-  // GET SINGLE BLOG
+  // GET SINGLE employee
 
   router.get('/singleEmp/:id', (req, res) => {
     // Check if id is present in parameters
     if (!req.params.id) {
       res.json({ success: false, message: 'No Employee ID was provided.' }); // Return error message
     } else {
-      // Check if the blog id is found in database
+      // Check if the employee id is found in database
       Employee.findOne({ _id: req.params.id }, (err, employee) => {
         // Check if the id is a valid ID
         if (err) {
           res.json({ success: false, message: 'Not a valid Employee ID' }); // Return error message
         } else {
-          // Check if blog was found by id
+          // Check if employee was found by id
           if (!employee) {
             res.json({ success: false, message: 'Employee not found.' }); // Return error message
           } else {
@@ -104,45 +104,59 @@ module.exports = (router) => {
 
 
   router.put('/updateEmp', (req, res) => {
-    // Check if id is present in parameters
+    // Check if id was provided
     if (!req.body._id) {
-      res.json({ success: false, message: 'No employee ID was provided.' }); // Return error message
+      res.json({ success: false, message: 'No employee id provided' }); // Return error message
     } else {
-      // Check if the blog id is found in database
+      // Check if id exists in database
       Employee.findOne({ _id: req.body._id }, (err, employee) => {
-        // Check if the id is a valid ID
+        // Check if id is a valid ID
         if (err) {
           res.json({ success: false, message: 'Not a valid employee id' }); // Return error message
         } else {
-          // Check if blog was found by id
+          // Check if id was found in the database
           if (!employee) {
-            res.json({ success: false, message: 'Employee not found.' }); // Return error message
+            res.json({ success: false, message: 'employee id was not found.' }); // Return error message
           } else {
-            res.json({ success: true, message: 'Employee Updated' }); // Return success
+            employee.firstname = req.body.firstname; // Save latest employee title
+            employee.lastname = req.body.lastname; // Save latest body
+            employee.dob = req.body.dob;
+            employee.save((err) => {
+              if (err) {
+                if (err.errors) {
+                  res.json({ success: false, message: 'Please ensure form is filled out properly' });
+                } else {
+                  res.json({ success: false, message: err }); // Return error message
+                }
+              } else {
+                res.json({ success: true, message: 'employee Updated!' }); // Return success message
+              }
+            });
           }
         }
       });
     }
   });
 
+
   router.delete('/deleteEmp/:id', (req, res) => {
-    if(!req.params.id){
-      res.json({ success: false, message: 'No id provided'});
+    if (!req.params.id) {
+      res.json({ success: false, message: 'No id provided' });
     } else {
-      Employee.findOne({ _id: req.params.id}, (err, employee) => {
-        if(err) {
-          res.json({ success: false, message: 'Invalid Id'});
+      Employee.findOne({ _id: req.params.id }, (err, employee) => {
+        if (err) {
+          res.json({ success: false, message: 'Invalid Id' });
         } else {
-          if(!employee) {
-            res.json({ success: false, message: 'Employee was not found'});
+          if (!employee) {
+            res.json({ success: false, message: 'Employee was not found' });
           } else {
-             employee.remove((err) => {
-               if (err) {
-                 res.json({ success: false, message: err});
-               } else {
-                 res.json({ success: true, message: 'Employee Deleted'})
-               }
-             })
+            employee.remove((err) => {
+              if (err) {
+                res.json({ success: false, message: err });
+              } else {
+                res.json({ success: true, message: 'Employee Deleted' })
+              }
+            })
           }
         }
       })
@@ -151,4 +165,4 @@ module.exports = (router) => {
 
 
   return router; // Return router object to main index.js
-}
+};

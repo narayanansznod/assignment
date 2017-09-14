@@ -6,7 +6,7 @@
   </div>
 </div>
 
-<form (submit)="updateEmployeeSubmit" *ngIf="!loading">
+<form (submit)="updateEmployeeSubmit()" *ngIf="!loading">
   <div class="form-group">
     <label for="firstname">FirstName</label>
     <input [disabled]="processing" type="text" name="firstname" placeholder="*Employee FirstName" class="form-control" [(ngModel)]="employee.firstname" />
