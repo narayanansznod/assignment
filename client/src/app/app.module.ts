@@ -13,6 +13,7 @@ import { EmployeeService } from './services/employee.service';
 import { EditEmployeeComponent } from './components/employee/edit-employee/edit-employee.component';
 import { dateFormatPipe } from './components/employee/pipes';
 import { DatePipe } from '@angular/common';
+import { DeleteEmployeeComponent } from './components/employee/delete-employee/delete-employee.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { DatePipe } from '@angular/common';
     ListingComponent,
     EmployeeComponent,
     EditEmployeeComponent,
-    dateFormatPipe
+    dateFormatPipe,
+    DeleteEmployeeComponent
   ],
   imports: [
     BrowserModule,
