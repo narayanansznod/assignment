@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EmployeeService } from '../../../services/employee.service';
+import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -16,6 +17,7 @@ export class DeleteEmployeeComponent implements OnInit {
   currentUrl;
 
   constructor(
+    private location: Location,
     private employeeService: EmployeeService,
     private activatedRoute: ActivatedRoute,
     private router: Router
@@ -39,6 +41,10 @@ export class DeleteEmployeeComponent implements OnInit {
         }, 2000);
       }
     });
+  }
+
+  goBack() {
+    this.location.back();
   }
 
   ngOnInit() {
