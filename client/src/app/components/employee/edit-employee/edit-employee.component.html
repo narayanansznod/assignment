@@ -6,18 +6,18 @@
   </div>
 </div>
 
-<form (submit)="updateEmployeeSubmit">
+<form (submit)="updateEmployeeSubmit" *ngIf="!loading">
   <div class="form-group">
     <label for="firstname">FirstName</label>
-    <input type="text" name="firstname" placeholder="*Employee FirstName" class="form-control" [(ngModel)]="employee.firstname" />
+    <input [disabled]="processing" type="text" name="firstname" placeholder="*Employee FirstName" class="form-control" [(ngModel)]="employee.firstname" />
   </div>
   <div class="form-group">
     <label for="lastname">LastName</label>
-    <input type="text" name="lastname" placeholder="*Employee LastName" class="form-control" [(ngModel)]="employee.lastname" />
+    <input type="text" [disabled]="processing" name="lastname" placeholder="*Employee LastName" class="form-control" [(ngModel)]="employee.lastname" />
   </div>
   <div class="form-group">
     <label for="dob">Date of Birth</label>
-    <input type="date" name="dob" placeholder="*Employee DOB" class="form-control" [(ngModel)]="employee.dob" />
+    <input type="date" [disabled]="processing" name="dob" placeholder="*Employee DOB" class="form-control" [(ngModel)]="employee.dob" />
   </div>
 
     <!-- Delete Button -->

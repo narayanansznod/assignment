@@ -12,11 +12,7 @@ export class EditEmployeeComponent implements OnInit {
 
 message;
 messageClass;
-employee = {
-  firstname: String,
-  secondname: String,
-  dob: Number
-}
+employee;
 processing = false;
 currentUrl;
 loading = true;
@@ -30,7 +26,7 @@ loading = true;
     this.employeeService.editBlog(this.employee).subscribe(data => {
       if(!data.success){
         this.messageClass ='alert alert-danger';
-        this.message=data.message;
+        this.message = data.message;
         this.processing = false;
 
       } else {
@@ -50,9 +46,13 @@ loading = true;
     this.currentUrl = this.activatedRoute.snapshot.params; // When component loads, grab the id
     // Function to GET current blog with id in params
     this.employeeService.getSingleBlog(this.currentUrl.id).subscribe(data => {
-    
-        this.employee = data.employee; // Save blog object for use in HTML
-    
+      if (!data.success) {
+        this.messageClass = 'alert alert-danger'; // Set bootstrap error class
+        this.message = 'Blog not found.'; // Set error message
+      } else {
+        this.employee = data.employee;
+        this.loading = false; // Save blog object for use in HTML
+      }
     });
   }
 
