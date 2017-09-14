@@ -125,11 +125,11 @@ module.exports = (router) => {
     }
   });
 
-  router.delete('/deleteBlog/:id', (req, res) => {
+  router.delete('/deleteEmp/:id', (req, res) => {
     if(!req.params.id){
       res.json({ success: false, message: 'No id provided'});
     } else {
-      Employee.findOne({ _id: req.params.id}, (err, blog) => {
+      Employee.findOne({ _id: req.params.id}, (err, employee) => {
         if(err) {
           res.json({ success: false, message: 'Invalid Id'});
         } else {

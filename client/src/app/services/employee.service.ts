@@ -45,7 +45,7 @@ export class EmployeeService {
 
   deleteBlog(id){
     this.createAuthenticationHeaders(); // Create headers
-    return this.http.delete(this.domain + '/employeeroutes/deleteBlog/' + id, this.options).map(res => res.json());
+    return this.http.delete(this.domain + '/employeeroutes/deleteEmp/' + id, this.options).map(res => res.json());
   }
 
 }
